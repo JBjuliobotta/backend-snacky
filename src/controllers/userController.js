@@ -87,7 +87,7 @@ class UserController{
             const token=jwt.sign({
                 _id:user._id,
                 role:user.role
-            }, process.env.SECRET_KEY, {expiresIn:'1D'});
+            }, process.env.SECRET_KEY, {expiresIn:"7 days"});
 
             return res.status(200).json({email:user.email, role:user.role, token:token});
 
