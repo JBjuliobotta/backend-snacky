@@ -14,7 +14,6 @@ function isAuth(req, res, next){
         req.user=decodeToken;
         next();
     } catch (error) {
-        //next(new Error("Token vencido"));
         return res.status(401).json({message: "Token inválido y/o vencido"});
     }
 }

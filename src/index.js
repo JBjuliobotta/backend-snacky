@@ -4,6 +4,7 @@ const morgan=require('morgan');
 const path=require('path');
 const databaseConnection=require('./databaseConnection.js');
 const UserRoutes=require('./routes/userRoutes.js');
+const ProductRoutes=require('./routes/productRoutes.js');
 
 //instancia de express
 const app=express();
@@ -38,4 +39,6 @@ app.get('/test', async(req, res, next)=>{
 });
 
 UserRoutes('/users', app);
+
+ProductRoutes('/products', app)
 
