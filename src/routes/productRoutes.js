@@ -4,10 +4,10 @@ const Auth=require('../utils/authMiddlewares');
 const ProductRoutes=(base, app)=>{
     const controller=new ProductController();
 
-    app.post(`${base}/`, Auth.isAuth, Auth.isAdmin, async(req, res, next)=>{
+    app.post(`${base}/`, Auth.isAuth, Auth.isAdmin, async(req, res)=>{
         try {
-            const {title, description, category}=req.body;
-            await controller.Create(title, description, category);
+            const {title, description, category, stock, price, img}=req.body;
+            await controller.Create(title, description, category, stock, price, img);
             return res.status(201).json({message: "Éxito al crear el producto"});
         } catch (error) {
             console.error("Error al crear un producto-->", error);

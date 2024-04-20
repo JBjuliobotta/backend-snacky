@@ -2,15 +2,20 @@ const ProductModel=require('../models/productModel');
 const helpers=require('../utils/helpersFunctions');
 
 class ProductController{
-    async Create(title, description, category){
+    async Create(title, description, category, stock, price, img){
         try {
-            if(!helpers.validateTitle(title)||!helpers.validateDescription(description)||!helpers.validateCategory(category)){
+            if(!helpers.validateTitle(title)||!helpers.validateDescription(description)||!helpers.validateCategory(category)
+            ||!helpers.validateStock(stock)||!helpers.validatePrice(price)||!helpers.validateIMG(img)
+            ){
                 throw new Error("Error en alguno de los campos");
             }
             const product=new ProductModel({
                 title: title,
                 description: description,
-                category: category
+                category: category,
+                stock: stock,
+                price: price,
+                img: img
             });
 
             await product.save();

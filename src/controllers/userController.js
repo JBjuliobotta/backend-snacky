@@ -5,7 +5,7 @@ const jwt=require('jsonwebtoken');
 
 class UserController{
 
-    async CreateNewAdmin(email, password){
+    async CreateNewAdmin(email, password, name){
         try {
             if (!helpers.ValidateEmail(email)) {
                 throw new Error("Formato de email inválido")
@@ -14,9 +14,13 @@ class UserController{
             if (!helpers.ValidatePassword(password)){
                 throw new Error("Formato de password inválido")
             }
+            if (!helpers.validateName(name)){
+                throw new Error("Formato de password inválido")
+            }
             const JUMP=parseInt(process.env.BCRYPT_JUMP);
             const hash=await bcrypt.hash(password, JUMP);
             const newUser= new UserModel({
+                name:name,
                 email:email,
                 password:hash,
                 role:'Admin'
@@ -29,7 +33,7 @@ class UserController{
         }
     }
 
-    async CreateNewUser(email, password){
+    async CreateNewUser(email, password,name){
         try {
             if (!helpers.ValidateEmail(email)) {
                 throw new Error("Formato de email inválido")
@@ -38,9 +42,13 @@ class UserController{
             if (!helpers.ValidatePassword(password)){
                 throw new Error("Formato de password inválido")
             }
+            if (!helpers.validateName(name)){
+                throw new Error("Formato de password inválido")
+            }
             const JUMP=parseInt(process.env.BCRYPT_JUMP);
             const hash=await bcrypt.hash(password, JUMP);
             const newUser= new UserModel({
+                name:name,
                 email:email,
                 password:hash,
                 role:'User'

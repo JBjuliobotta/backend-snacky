@@ -33,4 +33,36 @@ function validateCategory(str){
     }
 }
 
-module.exports={ValidateEmail, ValidatePassword, validateTitle, validateDescription, validateCategory};
+function validateStock(str){
+    if(str!==undefined){
+        return true
+    } else {
+        return false
+    }
+}
+
+function validatePrice(str){
+    if(str!==undefined){
+        return true
+    } else {
+        return false
+    }
+}
+
+function validateIMG(str){
+    if(str!==undefined){
+        return true
+    } else {
+        return false
+    }
+}
+
+function validateName(str){
+    if(str!==undefined){
+        return true
+    } else {
+        return false
+    }
+}
+
+module.exports={ValidateEmail, ValidatePassword, validateTitle, validateDescription, validateCategory, validateName, validateIMG, validateStock, validatePrice};

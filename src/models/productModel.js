@@ -18,6 +18,18 @@ const ProductSchema=new Schema({
     category : {
         type: String,
         required:[true, "La categoría es requerida"]
+    },
+    stock : {
+        type: String,
+        required:[true, "El stock es requerido"]
+    },
+    price : {
+        type: String,
+        required:[true, "El precio es requerido"]
+    },
+    img : {
+        type: String,
+        required:[true, "La imágen del producto es requerida"]
     }
 });
 
