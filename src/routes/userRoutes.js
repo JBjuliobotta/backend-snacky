@@ -16,7 +16,7 @@ const UserRoutes=(base, app)=>{
         }
     });
 
-    app.post(`${base}`,Auth.isAuth,Auth.isAdmin, async(req, res)=>{
+    app.post(`${base}`, async(req, res)=>{
         try {
             const {email, password, name}=req.body;
             await controller.CreateNewUser(email, password, name);
