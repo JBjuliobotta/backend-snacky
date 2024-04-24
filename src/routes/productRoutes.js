@@ -6,8 +6,8 @@ const ProductRoutes=(base, app)=>{
 
     app.post(`${base}/`, Auth.isAuth, Auth.isAdmin, async(req, res)=>{
         try {
-            const {title, description, category, stock, price, img}=req.body;
-            await controller.Create(title, description, category, stock, price, img);
+            const {title, description, category, stock, price, image}=req.body;
+            await controller.Create(title, description, category, stock, price, image);
             return res.status(201).json({message: "Éxito al crear el producto"});
         } catch (error) {
             console.error("Error al crear un producto-->", error);
@@ -17,13 +17,14 @@ const ProductRoutes=(base, app)=>{
 
     app.get(`${base}/`, async(req, res)=>{
         try {
-            const {filter}=req.query
-            console.log("Valor de la query filter-->", filter);
+            
+            const {filter}=req.query;
+            console.log("valor de la query filter", filter);
             const response=await controller.GetAllProducts(filter);
             return res.status(200).json(response);
         } catch (error) {
             console.error("Error al obtener todos los productos-->", error);
-            return res.status(500).json({message:"Ocurrió un error al intentar obtener el producto"});
+            return res.status(500).json({message:"Ocurrió un error al intentar obtener los producto"});
         }
     });
 

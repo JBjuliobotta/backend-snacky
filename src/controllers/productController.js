@@ -2,10 +2,10 @@ const ProductModel=require('../models/productModel');
 const helpers=require('../utils/helpersFunctions');
 
 class ProductController{
-    async Create(title, description, category, stock, price, img){
+    async Create(title, description, category, stock, price, image){
         try {
             if(!helpers.validateTitle(title)||!helpers.validateDescription(description)||!helpers.validateCategory(category)
-            ||!helpers.validateStock(stock)||!helpers.validatePrice(price)||!helpers.validateIMG(img)
+            ||!helpers.validateStock(stock)||!helpers.validatePrice(price)||!helpers.validateIMG(image)
             ){
                 throw new Error("Error en alguno de los campos");
             }
@@ -15,7 +15,7 @@ class ProductController{
                 category: category,
                 stock: stock,
                 price: price,
-                img: img
+                image: image
             });
 
             await product.save();
@@ -27,7 +27,7 @@ class ProductController{
     async GetAllProducts(filter){
         try {
             let finalResponse=[];
-            if(filter!==undefined){
+            if (filter==undefined){
                 finalResponse=await ProductModel.find();
             }else {
                 finalResponse=await ProductModel.find({
@@ -35,6 +35,7 @@ class ProductController{
                 });
             }
             return finalResponse;
+            
         } catch (error) {
             throw error;
         }

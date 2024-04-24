@@ -27,7 +27,7 @@ const ProductSchema=new Schema({
         type: String,
         required:[true, "El precio es requerido"]
     },
-    img : {
+    image : {
         type: String,
         required:[true, "La imágen del producto es requerida"]
     }
