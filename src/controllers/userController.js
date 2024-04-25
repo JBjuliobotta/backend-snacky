@@ -104,6 +104,15 @@ class UserController{
         }
     }
 
+    async GetAllUsers(req,res) {
+        try {
+            const users=await UserModel.find();
+            return users;
+        } catch (error) {
+            throw error;
+        }
+    }
+
 };
 
 module.exports=UserController;

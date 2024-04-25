@@ -48,6 +48,16 @@ const UserRoutes=(base, app)=>{
         }
     })
 
+    app.get(`${base}/`,  async(req, res)=>{
+        try {
+            const response=await controller.GetAllUsers();
+            return res.status(200).json(response);
+        } catch (error) {
+            console.error("Error al obtener los usuarios-->", error);
+            return res.status(500).json({message: "Ocurrió un error al intentar obtener los usuarios"})
+        }
+    });
+
 };
 
 module.exports=UserRoutes;
