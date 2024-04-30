@@ -2,6 +2,9 @@
 
 Aplicación web creada con el stack **"MERN"**
 
+## Sitio dónde está deployado
+https://backend-snacky.onrender.com/
+
 ## Variables de entorno
 
     PORT=7000
