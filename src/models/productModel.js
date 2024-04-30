@@ -31,6 +31,8 @@ const ProductSchema=new Schema({
         type: String,
         required:[true, "La imágen del producto es requerida"]
     }
+},{
+    timestamps: true
 });
 
 const ProductModel=mongoose.model("product", ProductSchema);
