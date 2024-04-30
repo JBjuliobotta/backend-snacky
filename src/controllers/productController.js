@@ -24,16 +24,27 @@ class ProductController{
         }
     };
 
-    async GetAllProducts(filter){
+    async GetAllProducts(filter, search){
         try {
             let finalResponse=[];
+            let query={};
+
+            if (filter!==undefined){
+                query["category"]=filter;
+            };
+            if (search!==undefined){
+                query["title"]={$regex:search, $options:"i"};
+            };
+            /*console.log("query", JSON.stringify(query));
+
             if (filter==undefined){
                 finalResponse=await ProductModel.find();
             }else {
                 finalResponse=await ProductModel.find({
                     category: filter
                 });
-            }
+            }*/
+            finalResponse=await ProductModel.find(query);
             return finalResponse;
             
         } catch (error) {
